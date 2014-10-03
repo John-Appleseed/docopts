@@ -126,10 +126,10 @@ except DocoptLanguageError as e:
     sys.exit("%s: invalid doc argument: %s" % (sys.argv[0], e))
 except DocoptExit as e:
     # invoked with invalid arguments
-    exit_message = "echo %s >&2\nexit 64" % (shellquote(str(e)),)
+    exit_message = "echo %s >&2\nreturn 64" % (shellquote(str(e)),)
 except SystemExit as e:
     # --help or --version found and --no-help was not given
-    exit_message = "echo -n %s\nexit 0" % (shellquote(sys.stdout.getvalue()),)
+    exit_message = "echo -n %s\nreturn 0" % (shellquote(sys.stdout.getvalue()),)
 finally:
     # restore stdout to normal and quit if a docopt parse error happened
     sys.stdout.close()
